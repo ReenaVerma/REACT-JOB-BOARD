@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Header from './components/Header';
+import './assets/scss/main.scss';
 
 class App extends React.Component {
 
@@ -15,7 +17,7 @@ class App extends React.Component {
     return (
       <main>
         <section>
-          <h1>REACT JOB BOARD</h1>
+          <Header />
         </section>
       </main>
     );
