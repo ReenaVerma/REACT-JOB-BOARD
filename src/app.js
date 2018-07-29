@@ -11,7 +11,9 @@ class App extends React.Component {
     console.log('CONSTRUCTOR');
 
     this.state = {
-      jobs: []
+      jobs: [],
+      searchData: '',
+      location: ''
     };
   }
 
@@ -19,16 +21,29 @@ class App extends React.Component {
   // MAKE JOB API REQUEST
   componentDidMount() {
     console.log('COMPONENT DID MOUNT');
-
-    axios.get('http://api.giphy.com/v1/gifs/search?q=trending&api_key=qj6zOrb0GLOPg317P3uw6LrWevvWFy5Q')
+    axios.get('https://jobs.github.com/positions.json?search=')
 
       .then(res => {
-        console.log('jobs', res);
+        console.log('jobs', res.data.slice(0, 9));
 
         this.setState(
-          { jobs: res }
+          { jobs: res.data.slice(0, 9) }
         );
+      });
+  }
 
+  handleChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ searchData: e.target.value });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    
+    axios.get(`https://jobs.github.com/positions.json?location=${this.state.searchData}`)
+      .then( res => {
+        this.setState({ location: res.data });
+        console.log(this.state.location);
       });
   }
 
@@ -38,7 +53,10 @@ class App extends React.Component {
       <main>
         <section>
           {/* <Navbar /> */}
-          <Header />
+          <Header
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
         </section>
       </main>
     );
