@@ -22,6 +22,12 @@ section {
   width: 500px;
 }
 
+.result {
+  width: 300px;
+  float: left;
+  margin: 5px;
+}
+
 // section:last-child {
 //   margin: 5%;
 // }
@@ -95,6 +101,7 @@ input::placeholder {
 
 .image {
   margin-bottom: 20px;
+  width: 300px;
 }
 
 .button.is-large {
