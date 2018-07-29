@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import Navbar from './components/Navbar';
 import Header from './components/Header';
 import './assets/scss/main.scss';
 
@@ -17,6 +18,7 @@ class App extends React.Component {
     return (
       <main>
         <section>
+          {/* <Navbar /> */}
           <Header />
         </section>
       </main>
