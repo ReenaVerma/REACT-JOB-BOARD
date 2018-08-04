@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({ handleChange, handleSubmit }) => (
+const HeaderForm = ({ handleChange, handleSubmit, handleChangeLocation }) => (
 
   <section className='hero homepage'>
     <div className='container'>
@@ -10,11 +10,17 @@ const Header = ({ handleChange, handleSubmit }) => (
       <form className="level-item" onSubmit={handleSubmit}>
         <div className="inputstyle field has-addons">
           <div className="control ">
-            <input className="input is-large"
+            <input className="input"
               type="text"
               placeholder="Software Engineer..."
               onChange={handleChange}
-
+            />
+          </div>
+          <div className="control ">
+            <input className="input"
+              type="text"
+              placeholder="city"
+              onChange={handleChangeLocation}
             />
           </div>
           <div className="control">
@@ -28,4 +34,4 @@ const Header = ({ handleChange, handleSubmit }) => (
   </section>
 );
 
-export default Header;
+export default HeaderForm;
