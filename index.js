@@ -1,13 +1,9 @@
 const express = require('express');
-// const cors = require('cors');
-// const axios = require('axios');
+
 
 const app = express();
-
-// app.use(cors());
-// app.options('*', cors());
-
 const port = process.env.PORT || 4000;
+app.use(express.static(`${__dirname}/public`));
 
 app.listen(port, () => console.log(`Express is running in PORT: ${port}`));
 
