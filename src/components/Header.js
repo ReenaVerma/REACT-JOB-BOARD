@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HeaderForm = ({ handleChange, handleSubmit, handleChangeLocation }) => (
+const Header = ({ handleChange, handleSubmit, handleChangeLocation }) => (
 
   <section className='hero homepage'>
     <div className='container'>
@@ -34,4 +34,4 @@ const HeaderForm = ({ handleChange, handleSubmit, handleChangeLocation }) => (
   </section>
 );
 
-export default HeaderForm;
+export default Header;

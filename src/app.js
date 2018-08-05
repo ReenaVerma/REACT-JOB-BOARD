@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-import HeaderForm from './components/HeaderForm';
+import Header from './components/Header';
 import Results from './components/Results';
 import './assets/scss/main.scss';
 
@@ -67,7 +67,7 @@ class App extends React.Component {
       <main>
         <section>
           {/* <Navbar /> */}
-          <HeaderForm
+          <Header
             handleChange={this.handleChange}
             handleChangeLocation={this.handleChangeLocation}
             handleSubmit={this.handleSubmit}
