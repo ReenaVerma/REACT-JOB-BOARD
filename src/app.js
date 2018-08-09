@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
+import Navbar from './components/Navbar';
+
+import Jobs from './components/Jobs';
 import Results from './components/Results';
 import JobResults from './components/JobResults';
 import JobDescription from './components/JobDescription';
@@ -78,24 +81,27 @@ class App extends React.Component {
 
 
       <main>
-        <section>
-          {/* <Navbar /> */}
-          <BrowserRouter>
+        <BrowserRouter>
+          <section>
+            <Navbar />
+
             <Switch>
+              <Route path="/jobs" component={Jobs} />
               <Route path="/jobresults" component={JobResults} />
               <Route path="/jobdescription" component={JobDescription} />
               <Route path="/apply" component={ApplyNow} />
               <Route path="/confirmation" component={Confirmation} />
             </Switch>
-          </BrowserRouter>
 
-          <Header
-            handleChange={this.handleChange}
-            handleChangeLocation={this.handleChangeLocation}
-            handleSubmit={this.handleSubmit}
-          />
-          <Results locations={this.state.locations}/>
-        </section>
+            <Header
+              handleChange={this.handleChange}
+              handleChangeLocation={this.handleChangeLocation}
+              handleSubmit={this.handleSubmit}
+            />
+            <Results locations={this.state.locations}/>
+          </section>
+        </BrowserRouter>
+
       </main>
     );
   }

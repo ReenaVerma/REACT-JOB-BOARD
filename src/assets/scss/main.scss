@@ -1,2 +1,16 @@
 
-@import "./components/header";
+// COLORS
+$blue: rgb(28,223,254);
+$mint: rgb(77,246,192);
+$orange: rgb(255,167,63);
+$pink: rgb(255,15,202);
+$black: rgb(24,31,34);
+$white: #fff;
+$light-grey: #e4e4e4;
+$medium-grey: #999;
+$grey: #666;
+
+
+@import "./components/_base";
+@import "./components/_header";
+@import "./components/_nav";

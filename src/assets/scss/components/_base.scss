@@ -1,0 +1,55 @@
+@mixin flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+@mixin padding-LeftRight {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@mixin main-width {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@mixin flex-row-wrap {
+  width: 100% !important;
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+}
+
+@mixin flex-item-main {
+  width: 100%;
+  padding: 0px;
+  margin-top: 10px;
+  line-height: 1;
+  color: $black;
+  font-size: 1em;
+}
+
+@mixin section-margin-padding-relative {
+  margin: 0 auto;
+  padding: 0px;
+  position: relative;
+}
+
+@mixin display-margin-relative {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin grey-underline {
+  color: $grey;
+  text-decoration: underline;
+}
