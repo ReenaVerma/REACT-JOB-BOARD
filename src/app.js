@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 
 import Jobs from './components/Jobs';
-import Results from './components/Results';
+import HomePageResults from './components/HomePageResults';
 import JobResults from './components/JobResults';
 import JobDescription from './components/JobDescription';
 import ApplyNow from './components/ApplyNow';
@@ -38,8 +38,8 @@ class App extends React.Component {
     axios.get('https://jobs.github.com/positions.json?search=')
 
       .then(res => {
-        console.log(res.data.slice(0,9));
-        this.setState({ jobs: res.data.slice(0,9) });
+        console.log(res.data.slice(0,4));
+        this.setState({ jobs: res.data.slice(0,4) });
       });
   }
 
@@ -64,14 +64,12 @@ class App extends React.Component {
     console.log(this.state.searchData);
     axios.get(`https://jobs.github.com/positions.json?description=${this.state.searchData}&location=${this.state.cityData}`)
 
-    // this.history.pushState(null, '/jobresults')
 
       .then(res => {
         this.setState({ locations: res.data });
-        console.log(res.data.slice(0,9));
-        // this.props.setLocation(this.state.locations);
         console.log('location data', this.state.locations);
-      });
+      })
+      .then(() => this.props.history.push('/jobresults'));
   }
 
 
@@ -98,7 +96,7 @@ class App extends React.Component {
               handleChangeLocation={this.handleChangeLocation}
               handleSubmit={this.handleSubmit}
             />
-            <Results locations={this.state.locations}/>
+            <HomePageResults jobs={this.state.jobs}/>
           </section>
         </BrowserRouter>
 
