@@ -3,7 +3,15 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Results from './components/Results';
+import JobResults from './components/JobResults';
+import JobDescription from './components/JobDescription';
+import ApplyNow from './components/ApplyNow';
+import Confirmation from './components/Confirmation';
 import './assets/scss/main.scss';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+
 
 class App extends React.Component {
 
@@ -20,11 +28,11 @@ class App extends React.Component {
   }
 
 
+
   // FUNCTION TO CALL API IS WORKING
   componentDidMount() {
     console.log('Component Did Mount: WORKING');
     axios.get('https://jobs.github.com/positions.json?search=')
-    // axios.get('/api/jobs')
 
       .then(res => {
         console.log(res.data.slice(0,9));
@@ -53,9 +61,12 @@ class App extends React.Component {
     console.log(this.state.searchData);
     axios.get(`https://jobs.github.com/positions.json?description=${this.state.searchData}&location=${this.state.cityData}`)
 
+    // this.history.pushState(null, '/jobresults')
+
       .then(res => {
         this.setState({ locations: res.data });
-        console.log(res.data);
+        console.log(res.data.slice(0,9));
+        // this.props.setLocation(this.state.locations);
         console.log('location data', this.state.locations);
       });
   }
@@ -64,9 +75,20 @@ class App extends React.Component {
 
   render() {
     return(
+
+
       <main>
         <section>
           {/* <Navbar /> */}
+          <BrowserRouter>
+            <Switch>
+              <Route path="/jobresults" component={JobResults} />
+              <Route path="/jobdescription" component={JobDescription} />
+              <Route path="/apply" component={ApplyNow} />
+              <Route path="/confirmation" component={Confirmation} />
+            </Switch>
+          </BrowserRouter>
+
           <Header
             handleChange={this.handleChange}
             handleChangeLocation={this.handleChangeLocation}
