@@ -13,8 +13,9 @@ import Confirmation from './components/Confirmation';
 import './assets/scss/main.scss';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
-
+const history = createHistory();
 
 class App extends React.Component {
 
@@ -67,10 +68,28 @@ class App extends React.Component {
 
       .then(res => {
         this.setState({ locations: res.data });
-        console.log('location data', this.state.locations);
+        history.push('/jobresults');
+        console.log('location data from handleSubmit', this.state.locations);
       })
-      .then(() => this.props.history.push('/jobresults'));
-  }
+
+      .catch(error => console.log(error));
+  };
+
+
+
+  // HANDLE SUBMIT
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(this.state.searchData);
+  //   axios.get(`https://jobs.github.com/positions.json?description=${this.state.searchData}&location=${this.state.cityData}`)
+  //
+  //
+  //     .then(res => {
+  //       this.setState({ locations: res.data });
+  //       console.log('location data', this.state.locations);
+  //     })
+  //     .then(() => this.props.history.push('/jobresults'));
+  // }
 
 
 
@@ -79,13 +98,13 @@ class App extends React.Component {
 
 
       <main>
-        <BrowserRouter>
+        <BrowserRouter history={history}>
           <section>
             <Navbar />
 
             <Switch>
               <Route path="/jobs" component={Jobs} />
-              <Route path="/jobresults" component={JobResults} />
+              <Route path="/jobresults" history={this.props.history} component={JobResults} />
               <Route path="/jobdescription" component={JobDescription} />
               <Route path="/apply" component={ApplyNow} />
               <Route path="/confirmation" component={Confirmation} />
