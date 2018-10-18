@@ -5,11 +5,11 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 
 import Jobs from './components/Jobs';
-// import HomePageResults from './components/HomePageResults';
+import HomePageResults from './components/HomePageResults';
 import JobResults from './components/JobResults';
-// import JobDescription from './components/JobDescription';
-// import ApplyNow from './components/ApplyNow';
-// import Confirmation from './components/Confirmation';
+import JobDescription from './components/JobDescription';
+import ApplyNow from './components/ApplyNow';
+import Confirmation from './components/Confirmation';
 import './assets/scss/main.scss';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -34,15 +34,15 @@ class App extends React.Component {
 
 
   // FUNCTION TO CALL API IS WORKING
-  // componentDidMount() {
-  //   console.log('Component Did Mount: WORKING');
-  //   axios.get('https://jobs.github.com/positions.json?search=')
-  //
-  //     .then(res => {
-  //       console.log(res.data.slice(0,4));
-  //       this.setState({ jobs: res.data.slice(0,4) });
-  //     });
-  // }
+  componentDidMount() {
+    console.log('Component Did Mount: WORKING');
+    axios.get('https://jobs.github.com/positions.json?search=')
+
+      .then(res => {
+        console.log(res.data.slice(0,4));
+        this.setState({ jobs: res.data.slice(0,4) });
+      });
+  }
 
 
   // HANDCHANGE FOR JOB SEARCH
@@ -105,18 +105,20 @@ class App extends React.Component {
           <section>
             <Navbar />
 
+            <Switch>
+              <Route path="/jobs" component={Jobs} />
+              <Route path="/jobresults" history={this.props.history} component={JobResults} locations={this.state.locations}/>
+              <Route path="/jobdescription" component={JobDescription} />
+              <Route path="/apply" component={ApplyNow} />
+              <Route path="/confirmation" component={Confirmation} />
+            </Switch>
+
             <Header
               handleChange={this.handleChange}
               handleChangeLocation={this.handleChangeLocation}
               handleSubmit={this.handleSubmit}
             />
-
-            <Switch>
-              <Route path="/jobs" component={Jobs} />
-              <Route path="/jobresults" history={this.props.history} component={JobResults} locations={this.state.locations}/>
-            </Switch>
-            {/* <Jobs /> */}
-            {/* <HomePageResults jobs={this.state.jobs}/> */}
+            <HomePageResults jobs={this.state.jobs}/>
             <JobResults locations={this.state.locations}/>
           </section>
         </BrowserRouter>
