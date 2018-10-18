@@ -51,9 +51,9 @@ class Jobs extends React.Component {
     return(
 
 
-        <section>
-          <HomePageResults jobs={this.state.jobs}/>
-        </section>
+      <section>
+        <HomePageResults jobs={this.state.jobs}/>
+      </section>
 
     );
   }

@@ -112,7 +112,7 @@ class App extends React.Component {
             />
 
             <Switch>
-              <Route path="/" component={Jobs} />
+              <Route path="/jobs" component={Jobs} />
               <Route path="/jobresults" history={this.props.history} component={JobResults} locations={this.state.locations}/>
             </Switch>
             {/* <Jobs /> */}

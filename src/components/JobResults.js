@@ -7,7 +7,7 @@ const JobResults = ({ locations }) => {
   return (
 
     <section>
-      <h3 className="title has-text-centered animated shake slow">HELLO RESULTS</h3>
+      <h3 className="title has-text-centered animated shake slow">/JobResults</h3>
       <div className="columns is-multiline">
         {locations.map((job, i) => <div className="result" key={i}>
 
