@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 
-import Jobs from './components/Jobs';
+// import Jobs from './components/Jobs';
 // import HomePageResults from './components/HomePageResults';
 import JobResults from './components/JobResults';
 // import JobDescription from './components/JobDescription';
@@ -33,18 +33,6 @@ class App extends React.Component {
 
 
 
-  // FUNCTION TO CALL API IS WORKING
-  // componentDidMount() {
-  //   console.log('Component Did Mount: WORKING');
-  //   axios.get('https://jobs.github.com/positions.json?search=')
-  //
-  //     .then(res => {
-  //       console.log(res.data.slice(0,4));
-  //       this.setState({ jobs: res.data.slice(0,4) });
-  //     });
-  // }
-
-
   // HANDCHANGE FOR JOB SEARCH
   handleChange = (e) => {
     console.log(e.target.value);
@@ -70,13 +58,26 @@ class App extends React.Component {
       .then(res => {
         this.setState({ locations: res.data });
         history.push('/jobresults');
-        this.props.history.push('/jobresults');
+        // this.props.history.push('/jobresults');
         console.log(history);
         console.log('location data from handleSubmit', this.state.locations);
       })
 
       .catch(error => console.log(error));
   };
+
+
+
+  // FUNCTION TO CALL API IS WORKING
+  // componentDidMount() {
+  //   console.log('Component Did Mount: WORKING');
+  //   axios.get('https://jobs.github.com/positions.json?search=')
+  //
+  //     .then(res => {
+  //       console.log(res.data.slice(0,3));
+  //       this.setState({ jobs: res.data.slice(0,3) });
+  //     });
+  // }
 
 
 
@@ -112,11 +113,14 @@ class App extends React.Component {
             />
 
             <Switch>
-              <Route path="/jobs" component={Jobs} />
-              <Route path="/jobresults" history={this.props.history} component={JobResults} locations={this.state.locations}/>
+              {/* <Route path='/' component={HomePageResults} jobs={this.state.jobs} /> */}
+              {/* <Route path="/jobs" component={Jobs} /> */}
+              <Route path="/jobresults" locations={this.state.locations} component={JobResults} />
+
+
             </Switch>
             {/* <Jobs /> */}
-            {/* <HomePageResults jobs={this.state.jobs}/> */}
+            {/*  <HomePageResults jobs={this.state.jobs} />*/}
             <JobResults locations={this.state.locations}/>
           </section>
         </BrowserRouter>

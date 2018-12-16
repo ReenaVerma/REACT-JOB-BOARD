@@ -5,7 +5,7 @@ import axios from 'axios';
 // import Navbar from './Navbar';
 
 // import Jobs from './components/Jobs';
-import HomePageResults from './HomePageResults';
+// import HomePageResults from './HomePageResults';
 // import JobResults from './JobResults';
 // import JobDescription from './components/JobDescription';
 // import ApplyNow from './components/ApplyNow';
@@ -52,7 +52,7 @@ class Jobs extends React.Component {
 
 
       <section>
-        <HomePageResults jobs={this.state.jobs}/>
+
       </section>
 
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 
 const JobResults = ({ locations }) => {
@@ -7,7 +8,7 @@ const JobResults = ({ locations }) => {
   return (
 
     <section>
-      <h3 className="title has-text-centered animated shake slow">/JobResults</h3>
+      <h3 className="title has-text-centered animated shake slow">JOB RESULTS</h3>
       <div className="columns is-multiline">
         {locations.map((job, i) => <div className="result" key={i}>
 
@@ -27,4 +28,5 @@ const JobResults = ({ locations }) => {
   );
 };
 
-export default JobResults;
+// export default JobResults;
+export default withRouter(JobResults);
