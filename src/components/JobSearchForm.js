@@ -70,6 +70,7 @@ class JobSearchForm extends React.Component {
 
       // These terms will then be used to in the this.fetchData() method of
       // "JobResults.js"
+      //Step by step guide
       this.props.history.push(`/jobresults/positions.json?description=${this.state.searchData}&location=${this.state.cityData}`);
 
     };
