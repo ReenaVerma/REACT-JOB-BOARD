@@ -1,9 +1,19 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+console.log('Hello');
 
 
 const JobResults = ({ locations }) => {
-  console.log('LOCATIONS FROM JOB RESULTS', locations);
+  // console.log('LOCATIONS FROM JOB RESULTS', locations);
+
+
+  // setLocation = (locations) => {
+  //   console.log('location set...', locations);
+  //   this.setState({ locations: this.state.locations });
+  //
+  // }
+
+
 
   return (
 
