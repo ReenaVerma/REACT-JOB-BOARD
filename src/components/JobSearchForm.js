@@ -10,10 +10,10 @@ import '../assets/scss/main.scss';
 class JobSearchForm extends React.Component {
 
   state = {
-    jobs: [],
+    // jobs: [],
     searchData: '',
-    cityData: 'new york',
-    locations: []
+    cityData: 'new york'
+    // locations: []
   };
 
 
