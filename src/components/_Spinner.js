@@ -1,17 +1,19 @@
 import React from 'react';
-import { compose, setDisplayName } from 'recompose';
+// import { compose, setDisplayName } from 'recompose';
 
-const Spinners = () => {
+const Spinner = () => {
 
   const children = [];
 
   for (var i = 1; i < 13; i++) {
-    children.push(<div key={i} className={`sk-circle${i} sk-circle`} />);
+    // children.push(<div key={i} className={`sk-circle${i} sk-circle`} />);
+    children.push(<div key={i} className={`sk-circle${i}`} />) ;
   }
   return children;
 };
 
-export default () => compose(setDisplayName(<div className='sk-fading-circle'>{Spinners()}</div>));
+export default Spinner;
+// export default () => compose(setDisplayName(<div className='sk-fading-circle'>{Spinner()}</div>));
 
 
 

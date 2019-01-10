@@ -3,9 +3,9 @@ import React from 'react';
 // import FooterHomepage from '../../components/common/FooterHomepage';
 import '../assets/scss/main.scss';
 // import createHistory from 'history/createBrowserHistory';
-
-
 // const history = createHistory();
+
+
 
 class JobSearchForm extends React.Component {
 
@@ -60,7 +60,8 @@ class JobSearchForm extends React.Component {
       // const { cityData, searchData } = this.state;
       // if (!cityData || !searchData) return;
 
-      if (!this.state.SearchData || !this.state.cityData ) return;
+      const { cityData, searchData } = this.state;
+      if (!cityData || !searchData) return;
 
       //The instruction below then says, takes these terms and pass them into the URL:
       // URL before submission:
@@ -71,7 +72,8 @@ class JobSearchForm extends React.Component {
       // These terms will then be used to in the this.fetchData() method of
       // "JobResults.js"
       //Step by step guide
-      this.props.history.push(`/jobresults/positions.json?description=${this.state.searchData}&location=${this.state.cityData}`);
+
+      this.props.history.push(`/jobresults/positions.json?description=${searchData}&location=${cityData}`);
 
     };
 

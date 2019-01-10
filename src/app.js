@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './components/Navbar';
-import JobSearchForm from './components/JobSearchForm';
-import JobResults from './components/JobResults';
-import { Router, Route, Switch } from 'react-router-dom';
+import JobSearchForm from './components/_JobSearchForm';
+import JobResults from './components/_JobResults';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './assets/scss/main.scss';
 // import axios from 'axios';
+import { render } from 'react-dom';
 
 // import Header from './components/Header';
 
@@ -18,23 +19,13 @@ import './assets/scss/main.scss';
 
 
 
-import createHistory from 'history/createBrowserHistory';
+// import createHistory from 'history/createBrowserHistory';
 
-const history = createHistory();
+// const history = createHistory();
 
+console.log('APP.js loaded');
 class App extends React.Component {
 
-  constructor() {
-    super();
-    console.log('CONSTRUCTOR');
-
-    this.state = {
-      jobs: [],
-      searchData: '',
-      cityData: 'new york',
-      locations: []
-    };
-  }
 
 
 
@@ -101,22 +92,23 @@ class App extends React.Component {
   // }
 
 
-
+  //<Router history={history}>
   render() {
     return(
       <main>
-        <Router history={history}>
+
+        <BrowserRouter>
           <section>
             <Navbar />
 
             <Switch>
-              <Route path="/" component={JobSearchForm} jobs={this.state.jobs} />
-              {/* <Route path="/jobs" component={Jobs} /> */}
-              <Route path="/jobresults" locations={this.state.locations} component={JobResults} />
+              <Route exact path="/" component={JobSearchForm} />
+              <Route path="/jobs" component={JobResults} />
+              <Route path="/jobresults/:id" component={JobResults} />
             </Switch>
 
           </section>
-        </Router>
+        </BrowserRouter>
         {/* <Header
           handleChange={this.handleChange}
           handleChangeLocation={this.handleChangeLocation}
@@ -133,7 +125,8 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
+render(<App />, document.getElementById('root'));

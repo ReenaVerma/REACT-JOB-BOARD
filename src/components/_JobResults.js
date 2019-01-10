@@ -4,11 +4,10 @@ import axios from 'axios';
 import qs from 'qs';
 import isEmpty from 'lodash/isEmpty';
 
-import Spinner from 'Spinner';
-import NoResults from 'NoResults';
-import ShowResults from 'ShowResults';
+import Spinner from './_Spinner';
+import NoResults from './_NoResults';
+import ShowResults from './_ShowResults';
 
-import { withRouter } from 'react-router-dom';
 
 
 const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
@@ -17,7 +16,7 @@ const descriptions = ['Developer', 'Engineer', 'MySQL', 'MongoDB'];
 
 
 
-class JobResults extends React.component {
+class JobResults extends React.Component {
 
   state = {
     isLoading: true,
@@ -30,20 +29,21 @@ class JobResults extends React.component {
   componentDidUpdate = ( prevProps, prevState ) => {
   //this.props.location is automatically passed into all components specified in
   // "index.js" routes by react-router.
+    console.log('PROPS', this.props);
 
-  // ex:  <Route path="/jobs" component={JobResults} />
-  // ex:  <Route path="/jobresults/:id" component={JobResults} />
+    // ex:  <Route path="/jobs" component={JobResults} />
+    // ex:  <Route path="/jobresults/:id" component={JobResults} />
 
-  // All of those components have access to this.props.location,
-  // this.props.history, ...etc
+    // All of those components have access to this.props.location,
+    // this.props.history, ...etc
 
-  // console.log(this.props) in the render method to see all available props
+    // console.log(this.props) in the render method to see all available props
 
 
-  // I'm using this lifecycle method because this JobResults component is being used
-  // for two different routes. If the route changes, but the component is the same
-  // for different routes, then React DOES NOT unmount, then remount.
-  // IT STAYS MOUNTED!!!!
+    // I'm using this lifecycle method because this JobResults component is being used
+    // for two different routes. If the route changes, but the component is the same
+    // for different routes, then React DOES NOT unmount, then remount.
+    // IT STAYS MOUNTED!!!!
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.setState({ isLoading: true }, () => this.fetchData() );
     }
@@ -113,9 +113,7 @@ class JobResults extends React.component {
        specified searched for jobs OR fetches a random job descrption in a random location.
        In other words, description and location will always be defined!
     */
-   axios(
-     `https://jobs.github.com/positions.json?description=${description}&location=${location}`
-   )
+   axios(`https://jobs.github.com/positions.json?description=${description}&location=${location}`)
      .then(({ data }) =>
        /* once again ES6 destructing above: .then(res => ...) sends back a res obj
            with properties. From that obj with props, I just want the data props,
@@ -143,6 +141,9 @@ class JobResults extends React.component {
 
 
  render() {
+
+   console.log('PROPS', this.props);
+
    return (
 
      this.state.isLoading ? (
@@ -191,4 +192,4 @@ class JobResults extends React.component {
 }
 
 // export default JobResults;
-export default withRouter(JobResults);
+export default JobResults;
