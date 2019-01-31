@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import Navbar from './components/Navbar';
 import JobSearchForm from './components/_JobSearchForm';
 import JobResults from './components/_JobResults';

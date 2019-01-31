@@ -6,11 +6,13 @@ import React from 'react';
 const NoResults = ({ err }) => {
   // console.log('LOCATIONS FROM JOB RESULTS', locations);
 
+
   return (
 
-    <section>
+
 
     err ? (
+
       <p style={{ textAlign: 'center', color: 'red' }}>
         <i style={{ marginRight: 5 }} className="fas fa-exclamation-circle" />
         {err}
@@ -25,7 +27,7 @@ const NoResults = ({ err }) => {
       </p>
     )
 
-    </section>
+
 
 
   );

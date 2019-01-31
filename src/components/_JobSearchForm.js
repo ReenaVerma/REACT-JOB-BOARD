@@ -53,8 +53,8 @@ class JobSearchForm extends React.Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state.searchData);
-      console.log(this.state.cityData);
+      console.log('searchData', this.state.searchData);
+      console.log('cityData', this.state.cityData);
 
       // this.state.cityData is the same as: const { cityData } = this.state;
       // const { cityData, searchData } = this.state;

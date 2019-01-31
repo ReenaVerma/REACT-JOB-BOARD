@@ -11,8 +11,8 @@ import ShowResults from './_ShowResults';
 
 
 const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
-const locations = ['Los Angeles', 'New York', 'San Mateo', 'San Francisco'];
-const descriptions = ['Developer', 'Engineer', 'MySQL', 'MongoDB'];
+const location = ['Los Angeles', 'New York', 'San Mateo', 'San Francisco'];
+const description = ['Developer', 'Engineer', 'MySQL', 'MongoDB'];
 
 
 
@@ -29,7 +29,9 @@ class JobResults extends React.Component {
   componentDidUpdate = ( prevProps, prevState ) => {
   //this.props.location is automatically passed into all components specified in
   // "index.js" routes by react-router.
-    console.log('PROPS', this.props);
+    console.log('prevProps', this.prevProps);
+    console.log('prevState', this.prevState);
+    console.log('props', this.props);
 
     // ex:  <Route path="/jobs" component={JobResults} />
     // ex:  <Route path="/jobresults/:id" component={JobResults} />
@@ -46,6 +48,7 @@ class JobResults extends React.Component {
     // IT STAYS MOUNTED!!!!
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.setState({ isLoading: true }, () => this.fetchData() );
+
     }
 
   //if this component is still mounted, but the current location.pathname
@@ -115,6 +118,7 @@ class JobResults extends React.Component {
     */
    axios(`https://jobs.github.com/positions.json?description=${description}&location=${location}`)
      .then(({ data }) =>
+
        /* once again ES6 destructing above: .then(res => ...) sends back a res obj
            with properties. From that obj with props, I just want the data props,
            therefore res.data can be destructured:
@@ -123,7 +127,9 @@ class JobResults extends React.Component {
            Once data has been SUCCESFULLY fetched, set isLoading to false and
            set jobs with data.
         */
-       this.setState({ isLoading: false, jobs: data.slice(0, 9) })
+       this.setState({ isLoading: false, jobs: data.slice(0, 9) },
+         console.log('jobs', this.jobs)
+       )
      )
      .catch(err => this.setState({ isLoading: false, err: err.toString() }));
    /* ABSOLUTELY NEED THIS .catch statement because if the fetch fails, then we
@@ -141,9 +147,6 @@ class JobResults extends React.Component {
 
 
  render() {
-
-   console.log('PROPS', this.props);
-
    return (
 
      this.state.isLoading ? (
@@ -160,7 +163,7 @@ class JobResults extends React.Component {
            {isEmpty(this.state.jobs) ? (
              <NoResults err={this.state.err}/>
            ) : (
-             <ShowResults err={this.state.err}/>
+             <ShowResults err={this.state.jobs}/>
            )
 
            }
